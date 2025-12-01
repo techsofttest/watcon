@@ -1,0 +1,51 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('legal_instruments', function (Blueprint $table) {
+            $table->id();
+            $table->string('title');
+
+            $table->foreignId('caselaw_category_id')
+                ->nullable()
+                ->constrained('caselaw_categories')
+                ->onUpdate('cascade')
+                ->onDelete('set null');
+
+             $table->foreignId('country_id')
+                ->nullable()
+                ->constrained('countries')
+                ->onUpdate('cascade')
+                ->onDelete('set null');
+
+            $table->foreignId('state_id')
+                ->nullable()
+                ->constrained('states')
+                ->onUpdate('cascade')
+                ->onDelete('set null');
+
+            $table->integer('year')->nullable();
+            $table->string('document_number')->nullable();
+            $table->text('headnote')->nullable();
+
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('legal_instruments');
+    }
+};
