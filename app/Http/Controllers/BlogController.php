@@ -17,7 +17,7 @@ class BlogController extends Controller
 
     $data['blogs'] = Blog::where('category_id',1)->get();
 
-    $data['title'] = "Blogs";
+    $data['title'] = "Blogs/Media";
 
     return view('pages.blogs',$data);
 

@@ -14,7 +14,7 @@ class TeamController extends Controller
     public function index()
     {
 
-    $data['seo'] = SeoMeta::find(2);
+    $data['seo'] = SeoMeta::find(3);
 
     $data['categories'] = TeamCategory::orderBy('name','desc')->get();
 

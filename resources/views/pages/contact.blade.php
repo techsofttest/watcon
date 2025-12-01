@@ -8,7 +8,14 @@
 
 {{$seo->custom_head_scripts}}
 
+<style>
 
+  .floating-button
+  {
+    display:none;
+  }
+
+</style>
 
 @endsection
 
@@ -34,7 +41,7 @@
 	
 	<div class="row coniuy justify-content-center sebox">
 
-      <div class="col-lg-6 col-md-6 col-md-6 d-flex">
+      <div class="col-lg-4 col-md-4 col-md-4 d-flex">
 
                 <div class=" style-eight">
 
@@ -52,9 +59,33 @@
                 </div>
 
       </div>
+
+
+      <div class="col-lg-4 col-md-4 col-md-4 d-flex">
+        <div class=" style-eight">
+                  <div class="service-box-icon"> 
+                  
+                  <a href="javascript:void(0)" class="enquireBtn">
+                    <i class="fal fa-envelope"></i>
+                  </a>
+
+                  </div>
+
+                  <div class="service-content">
+
+                  <a href="javascript:void(0)" class="enquireBtn">
+
+                    <h3>Email Us</h3>
+
+                  </a>
+                    
+
+                  </div>
+                </div>
+      </div>
 	   
 
-      <div class="col-lg-4 col-md-6 col-md-6 d-flex">
+      <div class="col-lg-4 col-md-4 col-md-4 d-flex">
       <div class=" style-eight">
             <div class="service-box-icon"> <i class="fal fa-link"></i> </div>
             <div class="service-content">

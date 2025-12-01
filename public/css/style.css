@@ -1,7 +1,7 @@
 
 :root {
---theme-color: #5aafcc;
---theme-color2:#325671;
+--theme-color: #5AB0CD;
+--theme-color2: #325671;
 --theme-color3:#da8a3d;
 --bg-color:#fef5ca;
 --title-color: #000;
@@ -2173,7 +2173,7 @@ border-radius: 100px;
   position: relative;
 }
 .blog-thumb img {
-  width: 200px;
+  width: 170px;
   height: 310px;
   object-fit: contain;
   background: white;
@@ -2486,10 +2486,10 @@ p span, p{
 	
 	}
 .partner-box{
-	padding:0 40px 0;
+	padding:0 15px 0;
 	position:relative;
-	margin-bottom:30px;
-	overflow:hoidden
+	margin-bottom:50px;
+	overflow:hidden
 }
  
 	@keyframes movement {
@@ -3300,15 +3300,16 @@ background-position:560px 0
   border-radius: 10px;
   z-index: 0;
 }
+
 .blog-card__image {
   width: 100%;
   display: block;
   border-radius: 28px;
   width: 100%;
-    height: 314px;
-    object-fit: contain;
-    height: 18vw!important;
+  height: 150px !important;
+  object-fit: contain;
 }
+
 .blog-card__overlay {
   display: flex;
   justify-content: center;
@@ -3359,21 +3360,21 @@ background-position:560px 0
     text-align: center;
     border-radius : 8px;
     position: absolute;
-    top: -25px;
+    top: -15px;
     left: 25px;
     z-index: 1000;
 }
 .blog-card__date-number {
-line-height: 1;
+    line-height: 1;
     margin-bottom: 0;
     width: 85px;
-    height: 58px;
+    height: 35px;
     border-radius: 10px 10px 0px 0px;
     background: var(--theme-color);
-    font-size: 32px;
+    font-size: 20px;
     font-weight: 600;
     text-align: center;
-    line-height: 58px;
+    line-height: 40px;
     color: #fff;
 }
 .blog-card__date-month {
@@ -3540,9 +3541,9 @@ ease;
     text-overflow: ellipsis;
 }
 .data-sec  span{
-       color: #cd650f;
-    font-weight: 700;
-    font-size: 18px;
+    color: #cd650f;
+    font-weight: 500;
+    font-size: 14px;
     margin-bottom: 0px;
     content: "";
     position: absolute;
@@ -3569,10 +3570,9 @@ ease;
 }
 
 .data-sec h4 {
-       font-size: 17px;
+    font-size: 17px;
     margin-bottom: 10px;
     color: var(--theme-color);
-    text-decoration: underline;
 }
 
 
@@ -3762,7 +3762,7 @@ ease;
 /***********/
 
 .databb-ma-sec {
-    padding: 170px 0 70px;
+    padding: 50px 0 70px;
     position: relative;
 	Background:var(--title-color2)
 }

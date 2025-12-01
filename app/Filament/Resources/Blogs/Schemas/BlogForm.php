@@ -8,6 +8,7 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\RichEditor;
+use App\Filament\Forms\Components\CkEditor;
 use Filament\Forms\Components\Select;
 use App\Models\BlogCategory;
 use Filament\Schemas\Schema;
@@ -25,11 +26,12 @@ class BlogForm
                     ->searchable()
                     ->nullable()
                     ->preload(),
-                TextInput::make('title')
+                TextInput::make('author'),
+                TextInput::make('title') 
                     ->required(),
                 //TextInput::make('slug')
                     //->required(),
-                RichEditor::make('description')
+                CkEditor::make('description')
                     ->columnSpanFull(),
                 FileUpload::make('featured_image')
                     ->image()

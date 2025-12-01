@@ -13,7 +13,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{{asset('css/app.min.css')}}">
 <link rel="stylesheet" href="{{asset('css/fontawesome.min.css')}}">
-<link rel="stylesheet" href="{{asset('css/style.css?v1.2.2')}}">
+<link rel="stylesheet" href="{{asset('css/style.css?v1.2.5')}}">
 <link rel="stylesheet" href="{{asset('css/responsive.css')}}">
 
 @yield('head_extras')
@@ -34,7 +34,7 @@
 
 
 
-<button class="floating-button" id="enquireBtn">CONTACT US</button>
+<button class="floating-button enquireBtn" id="enquireBtn">CONTACT US</button>
 
 
 
@@ -68,7 +68,7 @@
 
 <script src="{{asset('js/vendor/jquery-3.6.0.min.js')}}"></script>
 <script src="{{asset('js/app.min.js')}}"></script>
-<script src="{{asset('js/particles-config.js')}}"></script>
+<!--<script src="{{asset('js/particles-config.js')}}"></script>-->
 <script src="{{asset('js/main.js')}}"></script>
 
  <!-- scripts new start-->
@@ -93,20 +93,6 @@
     });
     </script> 
 
-    <script>
-
-    var header = $('#header-sticky');
-    var win = $(window);
-    
-    win.on('scroll', function() {
-    if ($(this).scrollTop() > 400) {
-	$(".fixedRit").addClass("fixedRit-sticky");
-    } else {
-	$(".fixedRit").removeClass("fixedRit-sticky");
-    }
-    });
-    </script> 
-
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.13.1/css/alertify.min.css" integrity="sha512-IXuoq1aFd2wXs4NqGskwX2Vb+I8UJ+tGJEu/Dc0zwLNKeQ7CW3Sr6v0yU3z5OQWe3eScVIkER4J9L7byrgR/fA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.13.1/css/themes/default.min.css" integrity="sha512-RgUjDpwjEDzAb7nkShizCCJ+QTSLIiJO1ldtuxzs0UIBRH4QpOjUU9w47AF9ZlviqV/dOFGWF6o7l3lttEFb6g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -115,13 +101,16 @@
 
 
 <script>
-        const enquireBtn = document.getElementById('enquireBtn');
+        const enquireBtns = document.querySelectorAll('.enquireBtn');
         const popupOverlay = document.getElementById('popupOverlay');
         const closeBtn = document.getElementById('closeBtn');
         const enquiryForm = document.getElementById('enquiryForm');
 
-        enquireBtn.addEventListener('click', () => {
-            popupOverlay.classList.add('active');
+        // For multiple buttons
+        enquireBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                popupOverlay.classList.add('active');
+            });
         });
 
         closeBtn.addEventListener('click', () => {

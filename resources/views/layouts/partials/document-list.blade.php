@@ -29,7 +29,15 @@
             <elem class="pdf-btn"><a target="_blank" href="{{asset('storage')}}/pdfs/uploads/c192001.pdf"><i class="fas fa-download"></i></a></elem>
 
 
-                <h4>{{ $item->categories->pluck('name')->join(', ') }}</h4>
+
+                <div class="category-container">
+                @foreach ($item->categories as $cat)
+                <span class="category-pill">{{ $cat->name }}</span>
+                @endforeach
+                </div>
+
+
+                <!--<h4>{{ $item->categories->pluck('name')->join(', ') }}</h4>-->
                
 
                 <h3>{{ $item->title ?? $item->parties }}</h3>

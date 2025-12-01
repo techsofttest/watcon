@@ -12,8 +12,8 @@
 <style>
 
 .partner-box img {
-    height: 130px;
-    width: 200px;
+    width: 100%;
+    height: 95px !important;
     object-fit: contain;
 }
 

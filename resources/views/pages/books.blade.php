@@ -15,6 +15,22 @@
 </style>
 
 
+<style>
+
+    img.blog-card__image
+    {
+    /*height: 350px !important;
+    background: white;*/
+
+    height: 310px !important;
+    width: 200px;
+    background: white;
+    margin: 0px auto;
+    }
+
+</style>
+
+
 @endsection
 
 
@@ -30,11 +46,46 @@
       <h2 class="sec-title mb-20">{{$title}}</h2>
 	   
     </div>
-<div class="row">
+<div class="row" style="justify-content:center">
 
 
 @foreach($publications as $book)
 
+
+<div class="col-lg-3 col-md-3 col-sm-12 d-flex  " data-aos="zoom-in" data-aos-duration="800">
+	
+	<div class="blog-card">
+						 <div class="blog-card__date">
+                                </div><!-- /.blog-card__date -->
+                            <a target="_blank" href="{{$book->url}}" class="blog-card__image-link">
+								
+                                <img src="{{asset('storage')}}/{{$book->image}}" alt="{{$book->title}}" width="100%" class="blog-card__image">
+                                <div class="blog-card__overlay">
+                                   
+                                </div><!-- /.blog-card__overlay -->
+                            </a><!-- /.blog-card__image-link -->
+                            <div class="blog-card__content">
+                              
+                               
+                                <h3 class="blog-card__title"><a target="_blank" href="{{$book->url}}">{{$book->title}}</a></h3>
+                           
+                                
+								                <a href="{{$book->url}}" class="blog-card__link">
+                                    Read more
+                                    <i class="fas fa-arrow-right"></i>
+                                </a>
+                                
+                                
+                                <!-- /.blog-card__link -->
+                            </div><!-- /.blog-card__content -->
+                        </div>
+	
+</div>
+
+
+
+
+@php /*
 <div class="col-lg-2 col-md-4 col-sm-4  ">
           <div class="blog-item" data-aos="zoom-in" data-aos-duration="1200">
           <div class="blog-thumb">
@@ -62,6 +113,7 @@
           </div>
           </div>
 </div>
+*/ @endphp
 
 @endforeach
 

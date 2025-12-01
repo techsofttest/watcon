@@ -17,7 +17,7 @@
   <ul class="sub-menu">
  <li>  <a  href="{{url('books')}}"> Books</a></li>
  <li>  <a  href="{{url('articles-book-chapters')}}">Articles/ book chapters</a></li>
- <li>  <a  href="{{url('blogs')}}">Blog/Media</a></li>
+ <li>  <a  href="{{url('blogs')}}">Blogs/Media</a></li>
 </ul>
  </li>		  
 <li ><a href="{{url('work-packages')}}">Work Packages</a></li>
@@ -54,7 +54,7 @@
   <ul class="sub-menu">
  <li>  <a  href="{{url('books')}}"> Books</a></li>
  <li>  <a  href="{{url('articles-book-chapters')}}">Articles/ book chapters</a></li>
- <li>  <a  href="{{url('blogs')}}">Blog/Media</a></li>
+ <li>  <a  href="{{url('blogs')}}">Blogs/Media</a></li>
 </ul>
  </li>		  
 <li ><a href="{{url('work-packages')}}">Work Packages</a></li>

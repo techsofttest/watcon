@@ -150,7 +150,13 @@ class DatabaseController extends Controller
     }
 
     if (!empty($highcourts) && !in_array('all', $highcourts)) {
-    $caseLaws->whereIn('court', $highcourts);
+    //$caseLaws->whereIn('court', $highcourts);
+    $caseLaws->where(function ($q) use ($highcourts) {
+        foreach ($highcourts as $hcourtt) {
+            $q->orWhere('court', 'LIKE', "%{$hcourtt}%");
+        }
+    });
+
     }
 
     if (!empty($courttypes) && !in_array('all', $courttypes)) {

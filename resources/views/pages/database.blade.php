@@ -154,6 +154,25 @@
     	font-weight: 600;
     	color: var(--title-color2);
 		}
+
+
+	.category-container {
+      border-radius: 12px;
+      margin-bottom: 15px;
+    }
+
+    .category-pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 10px;
+	  margin: 3px 0px;
+      background-color: #fff7cb;
+	  position:unset  !important;
+      border-radius: 9999px;
+      font-size: 14px;
+      font-weight: 500;
+      user-select: none;
+    }
         
 
 </style>
