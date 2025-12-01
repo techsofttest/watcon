@@ -177,7 +177,7 @@
 
 	.title-area .sec-title
 	{
-	margin-bottom: 50px;
+	margin-bottom: 50px !important;
 	}
 
 </style>
