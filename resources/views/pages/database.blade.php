@@ -175,6 +175,11 @@
     }
         
 
+	.title-area .sec-title
+	{
+	margin-bottom: 50px;
+	}
+
 </style>
 
 @endsection
