@@ -9,11 +9,16 @@
 <style>
 
 
-    .image_resized
-    {
-        margin:unset;
-        padding:10px;
+    figure.image {
+    margin: 0px;
+    padding: 10px;
     }
+
+    .image img{
+    border-radius:10px;
+    }
+      
+      
 
 
 
