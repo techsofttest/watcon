@@ -4,25 +4,25 @@
     <div class="mobile-logo"><a href="{{url('/')}}"><img src="{{asset('img/logo.png')}}" alt=""></a></div>
     <div class="as-mobile-menu">
    <ul>
-<li class="menu-item-has-children "><a href="javascript:void();">About  </a>
+<li class="menu-item-has-children "><a href="javascript:void(0);">About  </a>
   <ul class="sub-menu">
- <li>  <a  href="{{url('summary')}}"> Summary</a></li>
-  <li>  <a  href="{{url('team')}}">  Team</a></li>
+ <li>  <a  href="{{url('summary')}}">Summary</a></li>
+  <li>  <a  href="{{url('team')}}">Team</a></li>
     <li>  <a  href="{{url('contact')}}">Contact</a></li>
-    <li>  <a  href="{{url('jobs')}}"> Jobs</a></li>
+    <li>  <a  href="{{url('jobs')}}">Jobs</a></li>
 		  <li>  
 </ul>
 </li>
- <li class="menu-item-has-children "><a href="javascript:void();">Publications  </a>
+ <li class="menu-item-has-children "><a href="javascript:void(0);">Publications  </a>
   <ul class="sub-menu">
- <li>  <a  href="{{url('books')}}"> Books</a></li>
- <li>  <a  href="{{url('articles-book-chapters')}}">Articles/ book chapters</a></li>
+ <li>  <a  href="{{url('books')}}">Books</a></li>
+ <li>  <a  href="{{url('articles-book-chapters')}}">Articles / Book chapters</a></li>
  <li>  <a  href="{{url('blogs')}}">Blogs/Media</a></li>
 </ul>
  </li>		  
 <li ><a href="{{url('work-packages')}}">Work Packages</a></li>
 <li  ><a href="{{url('database')}}">Database</a> </li>
-<li ><a href="{{url('news')}}"> Events & News</a></li>
+<li ><a href="{{url('news')}}">Events & News</a></li>
 </ul>
     </div>
   </div>
@@ -41,25 +41,25 @@
          <div class="col-auto">
  <nav class="main-menu d-none d-lg-block ">
    <ul>
-<li class="menu-item-has-children "><a href="javascript:void();">About  </a>
+<li class="menu-item-has-children "><a href="javascript:void(0);">About  </a>
   <ul class="sub-menu">
- <li>  <a  href="{{url('summary')}}"> Summary</a></li>
-  <li>  <a  href="{{url('team')}}">  Team</a></li>
+ <li>  <a  href="{{url('summary')}}">Summary</a></li>
+  <li>  <a  href="{{url('team')}}">Team</a></li>
     <li>  <a  href="{{url('contact')}}">Contact</a></li>
-    <li>  <a  href="{{url('jobs')}}"> Jobs</a></li>
+    <li>  <a  href="{{url('jobs')}}">Jobs</a></li>
 		
 </ul>
 </li>
- <li class="menu-item-has-children "><a href="javascript:void();">Publications  </a>
+ <li class="menu-item-has-children "><a href="javascript:void(0);">Publications  </a>
   <ul class="sub-menu">
- <li>  <a  href="{{url('books')}}"> Books</a></li>
- <li>  <a  href="{{url('articles-book-chapters')}}">Articles/ book chapters</a></li>
+ <li>  <a  href="{{url('books')}}">Books</a></li>
+ <li>  <a  href="{{url('articles-book-chapters')}}">Articles / Book chapters</a></li>
  <li>  <a  href="{{url('blogs')}}">Blogs/Media</a></li>
 </ul>
  </li>		  
 <li ><a href="{{url('work-packages')}}">Work Packages</a></li>
 <li  ><a href="{{url('database')}}">Database</a> </li>
-<li ><a href="{{url('news')}}"> Events & News</a></li>
+<li ><a href="{{url('news')}}">Events & News</a></li>
 </ul>
     </nav>
  </div>
