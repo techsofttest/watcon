@@ -61,6 +61,8 @@
             box-shadow: 0 0 0 0.25rem rgba(49, 132, 253, 0.5);
         }
 
+        
+
         /* Secondary Button */
         .btn-secondary {
             color: #fff;
@@ -165,7 +167,7 @@
  
 <div class="container">
 
-@if(empty($blog->pdf_file))  
+@if(!empty($blog->description))  
 <div class="bb-top">
 <div class="row justify-content-between align-items-center">
 
@@ -183,22 +185,35 @@
     </div>
 @endif
 	
-        @if(!empty($blog->pdf_file))
+        
         <div class="row">
-        <div class="col-12" style="text-align:right;margin:5px 0px"><button type="button" class="btn btn-secondary" onclick="window.history.back()">
-                    ← Back
-                </button></div>
-        </div>
+
+       
+
+       
+        <div class="col-lg-12" style="text-align:right;margin:5px 0px">
+        
+        @if(!empty($blog->pdf_file))
+        <a target="_blank" href="{{url('storage')}}/{{$blog->pdf_file}}" class="btn btn-primary">
+            Download
+        </a>
         @endif
+
+        <button type="button" class="btn btn-secondary" onclick="window.history.back()">
+                    ← Back
+        </button>
+
+        </div>
+
+
+        </div>
+
+        
                 
 
 	
-    @if(empty($blog->pdf_file))
+    @if(!empty($blog->description))
 	<div class="row">
-
-	<div class="col-12" style="text-align:right;margin:5px 0px"><button type="button" class="btn btn-secondary" onclick="window.history.back()">
-                    ← Back
-                </button></div>
 
 	<div class="col-lg-12">
 	
@@ -224,6 +239,8 @@
 
 
 
+    @if(empty($blog->description))
+
     <div class="row">
 
     <style>
@@ -235,9 +252,11 @@
         }
     </style>
 
-<div id="pdfContainer" style="width:100%; overflow:auto;"></div>
+<div id="pdfContainer" style="width:75%; overflow:auto;margin:0px auto;"></div>
 
     </div>
+
+    @endif
 
  
    </div>
