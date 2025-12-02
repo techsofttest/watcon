@@ -12,6 +12,8 @@
     font-size: 16px !important;
     color: #cd652c !important;
 }
+
+
 </style>
 
 @endsection
