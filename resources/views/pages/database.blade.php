@@ -233,10 +233,9 @@
 								 
 							 
 							 	<li class="filter-attribute-item">
-									<input type="checkbox" id="country-attribute-2" class="country_filter filter-attribute-checkbox ib-m">
+									<input type="checkbox" id="country-attribute-2" value="other" class="country_filter filter-attribute-checkbox ib-m">
 									<label for="country-attribute-2" class="filter-attribute-label ib-m">
 					Other Countries
-
 									</label>
 									
 									<div id="countryDiv" class="orter-padd" style="display:none;">
@@ -258,25 +257,17 @@
 							</li>
 
 
-
+							@foreach($countries as $country)
 								<li class="filter-attribute-item">
-									<input type="checkbox" id="other-attribute-1" value="bangladesh" class="country_filter filter-attribute-checkbox ib-m">
-									<label for="other-attribute-1" class="filter-attribute-label ib-m">
-				Bangladesh
+									<input type="checkbox" id="other-attribute-{{$country->name}}" value="{{$country->id}}" class="country_filter filter-attribute-checkbox ib-m">
+									<label for="other-attribute-{{$country->name}}" class="filter-attribute-label ib-m">
+
+									{{$country->name}}
 
 									</label>
 								</li>
-								<li class="filter-attribute-item">
-									<input type="checkbox" id="other-attribute-2" value="china" class="country_filter filter-attribute-checkbox ib-m">
-									<label for="other-attribute-2" class="filter-attribute-label ib-m">
-					China
+							@endforeach
 
-									</label>
-								</li>
-							
-							 
-									 
-							 
 									 
 							</div>
 						</ul>
@@ -290,7 +281,7 @@
 </div>
 								</li>
 							  	<li class="filter-attribute-item">
-									<input type="checkbox" id="country-attribute-3" value="india" class="country_filter filter-attribute-checkbox ib-m">
+									<input type="checkbox" id="country-attribute-3" value="1" class="country_filter filter-attribute-checkbox ib-m">
 									<label for="country-attribute-3" class="filter-attribute-label ib-m">
 					India
 
@@ -594,6 +585,13 @@
 																		</label>
 																	</li>
 
+																	<li class="filter-attribute-item">
+																		<input type="checkbox" id="ngt-attribute-6" value="NGT Special Branch" class="ngt-filter filter-attribute-checkbox ib-m">
+																		<label for="ngt-attribute-6" class="filter-attribute-label ib-m">
+																			NGT Special Branch
+																		</label>
+																	</li>
+
 																</div>
 															</ul>
 														</li>
@@ -604,10 +602,63 @@
 												</li>
 
 												<li class="filter-attribute-item">
+													
 													<input type="checkbox" id="cc-attribute-dc" value="dc" class="court-filter filter-attribute-checkbox ib-m">
+													
 													<label for="cc-attribute-dc" class="filter-attribute-label ib-m">
 														District Courts
 													</label>
+
+
+
+													<div id="DistrictCourtDiv" class="orter-padd" style="display:none;">
+													<ul class="filter ul-reset">
+														<li class="filter-item">
+															<ul class="filter-attribute-list ul-reset">
+																<div class="filter-attribute-list-inner">
+
+
+													<li class="filter-attribute-item">
+														<input type="checkbox" id="dc-attribute-1" value="1" class="dcourt-filter filter-attribute-checkbox ib-m">
+														<label for="dc-attribute-1" class="filter-attribute-label ib-m">
+														East Khasi Hills
+														</label>
+													</li>
+
+
+													<li class="filter-attribute-item">
+														<input type="checkbox" id="dc-attribute-2" value="1" class="dcourt-filter filter-attribute-checkbox ib-m">
+														<label for="dc-attribute-2" class="filter-attribute-label ib-m">
+														West Khasi Hills
+														</label>
+													</li>
+
+
+													<li class="filter-attribute-item">
+														<input type="checkbox" id="dc-attribute-3" value="1" class="dcourt-filter filter-attribute-checkbox ib-m">
+														<label for="dc-attribute-3" class="filter-attribute-label ib-m">
+														East Jaintia Hills
+														</label>
+													</li>
+
+
+													<li class="filter-attribute-item">
+														<input type="checkbox" id="dc-attribute-4" value="1" class="dcourt-filter filter-attribute-checkbox ib-m">
+														<label for="dc-attribute-4" class="filter-attribute-label ib-m">
+														West Jaintia Hills
+														</label>
+													</li>
+
+													
+																</div>
+															</ul>
+														</li>
+													</ul>
+												</div>
+
+
+
+
 												</li>
 
 												<li class="filter-attribute-item">
@@ -944,6 +995,18 @@ accordion('.filter-item', '.filter-item-inner-heading', '.filter-attribute-list'
 
 
 <script>
+    $('#cc-attribute-dc').on('change', function () {
+        if ($(this).is(':checked')) {
+            $('#DistrictCourtDiv').slideDown(); // show
+        } else {
+            $('#DistrictCourtDiv').slideUp();   // hide
+        }
+    });
+</script>
+
+
+
+<script>
     $('#ngt-checkbox').on('change', function () {
         if ($(this).is(':checked')) {
             $('#NgtDiv').slideDown(); // show
@@ -1070,6 +1133,32 @@ function loadMore() {
 	});
 
 	$(".country_filter,select[name=from_year], select[name=to_year], .doc-type-filter,.category-filter,.state-filter,.countrytype-checkbox,.hcourt-filter,.court-filter,.ngt-filter").on("change", function() {
+
+
+	if ($(this).hasClass("country_filter")) {
+
+    const value = $(this).val();
+
+    // CASE 1: User clicks "all"
+    if (value === "all") {
+
+        // Uncheck all EXCEPT "all" and "other"
+        $('.country_filter').each(function() {
+            if ($(this).val() !== "all" && $(this).val() !== "other" && $(this).val() != "1") {
+                $(this).prop('checked', false);
+            }
+        });
+    }
+
+    // CASE 2: User clicks any other (including "other")
+    else {
+        // Uncheck only "all"
+        $('.country_filter[value="all"]').prop('checked', false);
+    }
+	}
+
+
+
 
 	if ($(this).hasClass("category-filter")) {
 

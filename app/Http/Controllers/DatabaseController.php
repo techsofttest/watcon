@@ -10,6 +10,7 @@ use App\Models\CaseLaw;
 use App\Models\LegalInstrument;
 use App\Models\CaseLawCategory;
 use App\Models\State;
+use App\Models\Country;
 
 use Illuminate\Support\Facades\DB;
 
@@ -24,6 +25,8 @@ class DatabaseController extends Controller
     $data['categories'] = CaseLawCategory::orderBy('name','asc')->get();
 
     $data['states'] = State::where('name', '!=', 'Inter-State')->orderBy('name','asc')->get();
+
+    $data['countries'] = Country::where('name', '!=', 'India')->orderBy('name','asc')->get();
 
     $data['categories'] = CaseLawCategory::orderBy('name','asc')->get();
 
@@ -91,8 +94,61 @@ class DatabaseController extends Controller
 
 
 
-    if (!empty($countries) && !in_array('india', $countries)) {
-            $caseLaws->whereRaw('1 = 0'); // exclude all case laws
+    if (!empty($countries)) {
+
+    $hasIndia = in_array('india', $countries);
+    $hasOther = in_array('other', $countries);
+    $hasAll   = in_array('all', $countries);
+
+    // Remove special keywords
+    $specificCountries = array_diff($countries, ['india', 'other', 'all']);
+
+    /*
+    |--------------------------------------------------------------------------
+    | CASE 1: India + Other OR India + All  → Show ALL (no filter)
+    |--------------------------------------------------------------------------
+    */
+    if (($hasIndia && $hasOther && empty($specificCountries)) ||
+        ($hasIndia && $hasAll && empty($specificCountries))
+    ) {
+        // No filter → show everything
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | CASE 2: Specific countries selected → ignore (india, other, all)
+    |--------------------------------------------------------------------------
+    */
+    elseif (!empty($specificCountries)) {
+        $caseLaws->whereIn('country_id', $specificCountries);
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | CASE 3: Only India
+    |--------------------------------------------------------------------------
+    */
+    elseif ($hasIndia && !$hasOther && !$hasAll) {
+        $caseLaws->where('country_id', 1); // India
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | CASE 4: Only Other
+    |--------------------------------------------------------------------------
+    */
+    elseif ($hasOther && !$hasIndia && !$hasAll) {
+        $caseLaws->where('country_id', '!=', 1); // All except India
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | CASE 5: Only All → Show all EXCEPT India
+    |--------------------------------------------------------------------------
+    */
+    elseif ($hasAll && !$hasIndia) {
+        $caseLaws->where('country_id', '!=', 1); // All except India
+    }
     }
 
 
@@ -123,6 +179,7 @@ class DatabaseController extends Controller
     }
     */
     
+    /*
     if (!empty($countrytypes) && !in_array('all', $countrytypes)) {
     $caseLaws->where(function($q) use ($countrytypes, $states) {
 
@@ -148,6 +205,51 @@ class DatabaseController extends Controller
 
     });
     }
+    */
+
+
+    if (!empty($countrytypes) && !in_array('all', $countrytypes)) {
+
+    $caseLaws->where(function($q) use ($countrytypes, $states, $types) {
+
+        $hasState = in_array('state', $countrytypes);
+        $hasInter = in_array('inter', $countrytypes);
+        $hasUnion = in_array('union', $countrytypes);
+
+        // STATE
+        if ($hasState) {
+            $q->orWhere(function($s) use ($states) {
+                $s->whereNotNull('state_id');
+
+                if (!empty($states) && !in_array('all', $states)) {
+                    $s->whereIn('state_id', $states);
+                }
+            });
+        }
+
+        // INTERNATIONAL
+        if ($hasInter) {
+            $q->orWhere('state_id', 38);
+        }
+
+        // UNION
+        if ($hasUnion) {
+            $q->orWhere(function($u) use ($types) {
+                $u->whereNull('state_id');
+
+                // If caselaw type selected, include caselaw too
+                if (!empty($types) && !in_array('all', $types)) {
+                    if (in_array('caselaw', $types)) {
+                        $u->orWhereNotNull('state_id');
+                    }
+                }
+            });
+        }
+
+    });
+}
+
+
 
     if (!empty($highcourts) && !in_array('all', $highcourts)) {
     //$caseLaws->whereIn('court', $highcourts);
@@ -196,7 +298,7 @@ class DatabaseController extends Controller
 
 
     if (!empty($countries) && !in_array('india', $countries)) {
-            $legal->whereRaw('1 = 0'); // exclude all case laws
+            //$legal->whereRaw('1 = 0'); // exclude all case laws
     }
 
 
@@ -208,7 +310,7 @@ class DatabaseController extends Controller
 
     if (!empty($courttypes) && !in_array('all', $courttypes)) {
 
-    $legal->whereRaw('1 = 0');
+    //$legal->whereRaw('1 = 0');
 
     }
     
@@ -235,6 +337,7 @@ class DatabaseController extends Controller
     
     /* Fix */
     
+/*
    if (!empty($countrytypes) && !in_array('all', $countrytypes)) {
     $legal->where(function($q) use ($countrytypes, $states) {
 
@@ -262,6 +365,51 @@ class DatabaseController extends Controller
 
     });
 }
+    */
+
+
+         if (!empty($countrytypes) && !in_array('all', $countrytypes)) {
+
+     $legal->where(function($q) use ($countrytypes, $states, $types) {
+
+        $hasState = in_array('state', $countrytypes);
+        $hasInter = in_array('inter', $countrytypes);
+        $hasUnion = in_array('union', $countrytypes);
+
+        // STATE
+        if ($hasState) {
+            $q->orWhere(function($s) use ($states) {
+                $s->whereNotNull('state_id');
+
+                if (!empty($states) && !in_array('all', $states)) {
+                    $s->whereIn('state_id', $states);
+                }
+            });
+        }
+
+        // INTERNATIONAL
+        if ($hasInter) {
+            $q->orWhere('state_id', 38);
+        }
+
+        // UNION
+        if ($hasUnion) {
+            $q->orWhere(function($u) use ($types) {
+                $u->whereNull('state_id');
+
+                // If caselaw type selected, include caselaw too
+                if (!empty($types) && !in_array('all', $types)) {
+                    if (in_array('legal', $types)) {
+                        $u->orWhereNotNull('state_id');
+                    }
+                }
+            });
+        }
+
+    });
+}
+
+
     
     /* Fix End */
 
