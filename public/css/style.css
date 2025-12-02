@@ -303,6 +303,17 @@ label {
 	font-family:var(--body-font);
 	font-size:16px
 }
+
+.as-menu-wrapper.as-body-visible {
+	opacity:1;
+	visibility:visible
+}
+.as-menu-wrapper.as-body-visible .as-menu-area {
+	left:0;
+	opacity:1;
+	visibility:visible
+}
+
 .as-menu-wrapper {
 	position:fixed;
 	top:0;
