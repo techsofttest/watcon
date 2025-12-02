@@ -302,6 +302,70 @@ class DatabaseController extends Controller
     }
 
 
+
+      if (!empty($countries)) {
+
+    $hasIndia = in_array('india', $countries);
+    $hasOther = in_array('other', $countries);
+    $hasAll   = in_array('all', $countries);
+
+    // Remove special keywords
+    $specificCountries = array_diff($countries, ['india', 'other', 'all']);
+
+    /*
+    |--------------------------------------------------------------------------
+    | CASE 1: India + Other OR India + All  → Show ALL (no filter)
+    |--------------------------------------------------------------------------
+    */
+    if (($hasIndia && $hasOther && empty($specificCountries)) ||
+        ($hasIndia && $hasAll && empty($specificCountries))
+    ) {
+        // No filter → show everything
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | CASE 2: Specific countries selected → ignore (india, other, all)
+    |--------------------------------------------------------------------------
+    */
+    elseif (!empty($specificCountries)) {
+        $legal->whereIn('country_id', $specificCountries);
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | CASE 3: Only India
+    |--------------------------------------------------------------------------
+    */
+    elseif ($hasIndia && !$hasOther && !$hasAll) {
+        $legal->where('country_id', 1); // India
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | CASE 4: Only Other
+    |--------------------------------------------------------------------------
+    */
+    elseif ($hasOther && !$hasIndia && !$hasAll) {
+        $legal->where('country_id', '!=', 1); // All except India
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | CASE 5: Only All → Show all EXCEPT India
+    |--------------------------------------------------------------------------
+    */
+    elseif ($hasAll && !$hasIndia) {
+        $legal->where('country_id', '!=', 1); // All except India
+    }
+    }
+
+
+
+
+
+
+
     if (!empty($types) && !in_array('all', $types)) {
         if (!in_array('legal', $types)) {
             $legal->whereRaw('1 = 0'); // exclude all legal instruments
