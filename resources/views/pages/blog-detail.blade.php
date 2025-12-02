@@ -8,6 +8,15 @@
 
 <style>
 
+
+    .image_resized
+    {
+        margin:unset;
+        padding:10px;
+    }
+
+
+
 	/* Bootstrap Button Base Styles (purged CSS recovery) */
         .btn {
             display: inline-block;
