@@ -19,6 +19,12 @@
     border-bottom: none !important;
     font-size: 25px;
     }
+
+    .modal.show .modal-dialog
+    {
+        margin:125px auto !important;
+    }
+
 </style>
 
 @endsection
@@ -107,7 +113,7 @@
                 </div>
 
 
-                 @if(empty($member->profile_url))
+                @if(empty($member->profile_url))
                 <div class="modal fade" data-bs-backdrop="false" id="teamModal{{$member->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content modal-content-bg">
@@ -123,7 +129,7 @@
                     </div>
                 </div>
                 </div>
-            @endif
+                @endif
 
             @endforeach
 
