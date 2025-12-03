@@ -182,7 +182,7 @@
 
 /* 2-column cells split into vertical layout on mobile */
 .bb-left table td {
-    vertical-align: top;
+    /*vertical-align: top;*/
     padding: 10px;
     word-break: break-word;
 }
