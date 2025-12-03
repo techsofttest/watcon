@@ -273,10 +273,6 @@
     display: block !important;
 }
 
-/* Make table cells align from top */
-.ck-content table td {
-    vertical-align: top !important;
-}
 
 </style>
 
