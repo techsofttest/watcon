@@ -14,7 +14,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{{asset('css/app.min.css')}}">
 <link rel="stylesheet" href="{{asset('css/fontawesome.min.css')}}">
-<link rel="stylesheet" href="{{asset('css/style.css?v1.2.9')}}">
+<link rel="stylesheet" href="{{asset('css/style.css?v1.3.0')}}">
 <link rel="stylesheet" href="{{asset('css/responsive.css')}}">
 
 @yield('head_extras')
