@@ -586,9 +586,9 @@
 																	</li>
 
 																	<li class="filter-attribute-item">
-																		<input type="checkbox" id="ngt-attribute-6" value="NGT Special Branch" class="ngt-filter filter-attribute-checkbox ib-m">
+																		<input type="checkbox" id="ngt-attribute-6" value="NGT Special Bench" class="ngt-filter filter-attribute-checkbox ib-m">
 																		<label for="ngt-attribute-6" class="filter-attribute-label ib-m">
-																			NGT Special Branch
+																			NGT Special Bench
 																		</label>
 																	</li>
 

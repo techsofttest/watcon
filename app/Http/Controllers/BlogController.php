@@ -15,7 +15,7 @@ class BlogController extends Controller
 
     $data['seo'] = SeoMeta::find(8);
 
-    $data['blogs'] = Blog::where('category_id',1)->get();
+    $data['blogs'] = Blog::where('category_id',1)->orderBy('id','desc')->get();
 
     $data['title'] = "Blogs/Media";
 

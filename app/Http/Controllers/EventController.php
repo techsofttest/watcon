@@ -15,7 +15,7 @@ class EventController extends Controller
 
     $data['seo'] = SeoMeta::find(11);
 
-    $data['blogs'] = Blog::where('category_id',2)->get();
+    $data['blogs'] = Blog::where('category_id',2)->orderBy('id','desc')->get();
 
     $data['title'] = "Events and News";
 

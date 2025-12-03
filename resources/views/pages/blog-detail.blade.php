@@ -166,6 +166,118 @@
         border-radius: 25px;
         }
 
+
+
+        /* Make CKEditor tables fully responsive */
+
+        figure.table
+        {
+            margin: 0;
+        }
+.bb-left table {
+    width: 100% !important;
+    table-layout: fixed !important;
+    border-collapse: collapse;
+}
+
+/* 2-column cells split into vertical layout on mobile */
+.bb-left table td {
+    vertical-align: top;
+    padding: 10px;
+    word-break: break-word;
+}
+
+/* Images should NOT keep CKEditor’s inline width */
+.bb-left img {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100% !important;
+    display: block;
+}
+
+/* Remove CKEditor forced width on figure */
+.bb-left figure.image,
+.bb-left figure.table {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+/* Remove spacing caused by CKEditor resizing classes */
+.bb-left .image_resized {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+/* Mobile: make each cell full width */
+@media (max-width: 768px) {
+    .bb-left table tr {
+        display: block !important;
+    }
+    .bb-left table td {
+        display: block !important;
+        width: 100% !important;
+    }
+}
+
+
+
+/* Make table responsive by stacking on mobile */
+@media (max-width: 768px) {
+  .ck-content table,
+  .ck-content thead,
+  .ck-content tbody,
+  .ck-content th,
+  .ck-content td,
+  .ck-content tr {
+      display: block;
+      width: 100%;
+  }
+
+  .ck-content thead tr {
+      display: none; /* hide table header */
+  }
+
+  .ck-content tr {
+      margin-bottom: 15px;
+      padding: 10px;
+  }
+
+  .ck-content td {
+      text-align: right;
+      padding-left: 50%;
+      position: relative;
+  }
+
+  .ck-content td::before {
+      content: attr(data-label);  /* Pull column name */
+      position: absolute;
+      left: 10px;
+      width: 45%;
+      text-align: left;
+      font-weight: bold;
+  }
+}
+
+
+/* Remove CKEditor figure margins/padding */
+.ck-content figure.image {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Override CKEditor aspect-ratio on images */
+.ck-content figure.image img {
+    aspect-ratio: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    display: block !important;
+}
+
+/* Make table cells align from top */
+.ck-content table td {
+    vertical-align: top !important;
+}
+
 </style>
 
 
@@ -227,11 +339,11 @@
 
 	
     @if(!empty($blog->description))
-	<div class="row">
+	<div class="row justify-content-center">
 
-	<div class="col-lg-12">
+	<div class="col-lg-10 col-12">
 	
-	<div class="bb-left">
+	<div class="bb-left ck-content">
 	
     {!! $blog->description !!}
 
