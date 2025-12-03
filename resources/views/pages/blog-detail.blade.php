@@ -185,6 +185,7 @@
     /*vertical-align: top;*/
     padding: 10px;
     word-break: break-word;
+    font-size:12px;
 }
 
 /* Images should NOT keep CKEditor’s inline width */
